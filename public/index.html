@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | Tailwind Server</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gradient-to-br from-indigo-100 via-white to-blue-100 text-gray-800 min-h-screen flex flex-col items-center justify-center">
+    <div class="text-center max-w-lg w-full bg-white/90 shadow-2xl p-10 rounded-3xl border border-indigo-200 relative overflow-hidden">
+      <div class="absolute -top-10 -right-10 w-32 h-32 bg-purple-200 rounded-full opacity-30 animate-ping"></div>
+      <div class="absolute -bottom-12 -left-12 w-40 h-40 bg-indigo-200 rounded-full opacity-30"></div>
+      <h1 class="text-4xl font-extrabold text-indigo-700 mb-5 drop-shadow">Welcome to Tailwind Server</h1>
+      <p class="text-lg leading-relaxed mb-8 text-gray-600">
+        Experience blazing fast<br>
+        <span class="font-semibold text-indigo-600">Node.js static web serving!</span>
+        <br>
+        <span class="text-sm text-gray-500 italic">Modern, safe, and styled with Tailwind CSS.</span>
+        <br><br>
+        <span class="inline-flex items-center gap-2 font-medium text-gray-700">
+          <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13.828 21a1 1 0 0 1-.707-1.707l7.586-7.586a1 1 0 0 0 0-1.414l-7.586-7.586A1 1 0 0 1 13.828 2H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h8.828z"/></svg>
+          Node.js file server
+        </span>
+        <br>
+        <span class="inline-flex items-center gap-2 font-medium text-gray-700">
+          <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6v6l4 2"></path><circle cx="12" cy="12" r="10"></circle></svg>
+          Static assets & instant cache
+        </span>
+        <br>
+        <span class="inline-flex items-center gap-2 font-medium text-gray-700">
+          <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M7 12h2v2h6v-2h2"></path></svg>
+          Styled by <span class="text-indigo-600 font-semibold">Tailwind CSS</span>
+        </span>
+      </p>
+      <div class="flex items-center justify-center gap-4">
+        <a href="/about.html" class="px-6 py-2 bg-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:bg-indigo-700 hover:scale-105 transform transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-indigo-400">
+          <span class="inline-flex items-center gap-2">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 17l5-5m0 0l-5-5m5 5H6"></path></svg>
+            About Page
+          </span>
+        </a>
+        <a href="https://github.com/" target="_blank" rel="noopener" class="px-4 py-2 border border-indigo-400 bg-white text-indigo-600 font-medium rounded-xl hover:bg-indigo-50 hover:border-indigo-600 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-indigo-200">
+          <span class="inline-flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M12 2C6.48 2 2 6.58 2 12.22c0 4.48 2.87 8.28 6.84 9.63.5.1.68-.22.68-.48
+                0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.44-1.15-1.09-1.46-1.09-1.46-.89-.63.07-.62.07-.62
+                1 .07 1.53 1.06 1.53 1.06.87 1.52 2.29 1.08 2.85.83.09-.65.34-1.08.62-1.33-2.22-.26-4.56-1.14-4.56-5.09
+                0-1.13.39-2.05 1.03-2.77-.1-.26-.45-1.29.1-2.7 0 0 .84-.28 2.75 1.05a9.27 9.27 0 0 1 2.5-.34c.85.004 1.71.115
+                2.5.34 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.21 2.44.1 2.7.64.72 1.03 1.64 1.03 2.77 0 3.96-2.34 4.83-4.57
+                5.09.36.31.69.91.69 1.84 0 1.33-.01 2.4-.01 2.73 0 .27.18.59.69.48A10.006 10.006 0 0 0 22 12.22C22 6.58 17.52 2 12 2z">
+              </path>
+            </svg>
+            GitHub
+          </span>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
