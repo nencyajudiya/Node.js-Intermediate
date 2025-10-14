@@ -7,7 +7,6 @@ import crypto from "crypto";
 
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
 
-// __dirname replacement for ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -29,13 +28,12 @@ const contentTypes = new Map([
 ]);
 
 function safeResolveFromPublic(requestUrl) {
-  // Remove query/hash, normalize, prevent path traversal
   const urlPath = requestUrl.split("?")[0].split("#")[0];
   const rawPath = urlPath === "/" ? "/index.html" : urlPath;
   const normalizedPath = path.normalize(rawPath).replace(/^\\+|^\/+/, "");
   const resolved = path.join(publicDir, normalizedPath);
   if (!resolved.startsWith(publicDir)) {
-    return null; // Attempted path traversal
+    return null; 
   }
   return resolved;
 }
@@ -60,7 +58,6 @@ function selectCompression(acceptEncoding) {
 
 const server = http.createServer(async (req, res) => {
   try {
-    // Simple API route
     if (req.url === "/api/health") {
       const body = JSON.stringify({ status: "ok", uptimeSec: process.uptime() });
       res.writeHead(200, {
@@ -79,7 +76,6 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
-    // If directory is requested, serve index.html inside it
     let filePath = resolvedPath;
     let stat;
     try {
@@ -89,7 +85,6 @@ const server = http.createServer(async (req, res) => {
         stat = await fs.promises.stat(filePath);
       }
     } catch (e) {
-      // Not found -> serve 404 page if available
       const notFoundPath = path.join(publicDir, "404.html");
       try {
         const nf = await fs.promises.readFile(notFoundPath);
@@ -104,7 +99,6 @@ const server = http.createServer(async (req, res) => {
 
     const contentType = getContentType(filePath);
 
-    // Conditional caching
     const etag = computeEtag(stat);
     const lastModified = stat.mtime.toUTCString();
     if (req.headers["if-none-match"] === etag || req.headers["if-modified-since"] === lastModified) {
@@ -113,14 +107,12 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
-    // Set headers
     const headers = {
       "Content-Type": contentType,
       "Last-Modified": lastModified,
       ETag: etag,
     };
 
-    // Cache static assets for 1 hour, but not HTML to avoid staleness
     if (contentType.startsWith("text/html")) {
       headers["Cache-Control"] = "no-cache";
     } else {
@@ -130,10 +122,8 @@ const server = http.createServer(async (req, res) => {
     const acceptEncoding = String(req.headers["accept-encoding"] || "");
     const compression = selectCompression(acceptEncoding);
 
-    // Stream file (efficient memory usage)
     const readStream = fs.createReadStream(filePath);
 
-    // Handle basic stream errors
     readStream.on("error", () => {
       res.writeHead(500, { "Content-Type": "text/plain; charset=utf-8" });
       res.end("Server Error");
@@ -141,7 +131,6 @@ const server = http.createServer(async (req, res) => {
 
     if (compression) {
       headers["Content-Encoding"] = compression.enc;
-      // Do not send Content-Length when compressing (unknown beforehand)
       res.writeHead(200, headers);
       readStream.pipe(compression.stream).pipe(res);
     } else {
