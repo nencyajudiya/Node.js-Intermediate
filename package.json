@@ -1,19 +1,32 @@
 {
   "name": "intermediate",
   "version": "1.0.0",
-  "description": "",
+  "description": "Intermediate Node.js Static File Server with Advanced Features",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js",
-    "test": "echo 'No tests' && exit 0"
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "format": "prettier --write .",
+    "build:css": "tailwindcss -i ./public/input.css -o ./public/style.css --watch"
   },
-  "keywords": [],
+  "keywords": ["nodejs", "static-server", "http-server", "intermediate"],
   "author": "",
   "license": "ISC",
   "type": "module",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "morgan": "^1.10.0"
+  },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.14",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.4.2",
     "tailwindcss": "^4.1.14"
   }
 }
